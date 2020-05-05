@@ -70,7 +70,11 @@ console.log(p1.nom + ' ' + p1.age);
 var p2 = new Personne(2, "toto2", 45);
 console.log(p2.nom + ' ' + p2.age);
 console.log(p2);
-console.log(JSON.stringify(p2));
+Reflect.defineProperty(p2, "_age", { value: p2.age,
+    writable: true, enumerable: false, configurable: true });
+Reflect.defineProperty(p2, "age", { value: p2.age,
+    writable: true, enumerable: true, configurable: true });
+console.log(">>>>" + JSON.stringify(p2));
 var chose; // 12 ou "abc" ou ...
 var obj;
 //obj= null; 
