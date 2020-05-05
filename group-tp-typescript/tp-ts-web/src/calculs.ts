@@ -5,4 +5,4 @@ function addition(a:number, b:number):number{
     return res;
 }
 
-addition(6,7);
+//addition(6,7);  

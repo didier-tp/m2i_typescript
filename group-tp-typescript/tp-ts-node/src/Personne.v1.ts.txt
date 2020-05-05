@@ -1,0 +1,43 @@
+class Personne{
+    numero : number | undefined;
+    nom : string ;
+    private _age : number =0;
+
+    public get age() :number{
+        return this._age;
+    }
+
+    public set age(a:number){
+        if(a>=0)
+             this._age=a;
+        else throw "age negatif invalide"
+    }
+
+    constructor(numero:number|undefined = undefined, nom:string ="?" , age : number = 0){
+        this.numero=numero;
+        this.nom=nom;
+        this.age=age;  
+    }
+
+    incrementerAge():void {
+        this._age++;
+    }
+
+}
+
+let p1 : Personne;
+p1 = new Personne();
+p1.nom="toto";
+try {
+p1.age=-30;
+}
+catch(e){
+    console.log(e)
+}
+
+p1.incrementerAge();
+console.log(p1.nom + ' ' + p1.age);
+let p2 = new Personne(2,"toto2",45);
+console.log(p2.nom + ' ' + p2.age);
+console.log(p2)
+console.log(JSON.stringify(p2))
