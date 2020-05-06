@@ -1,20 +1,21 @@
-"use strict";
+import { Serie } from './Serie';
+import { MySimpleGraph } from './MyGraph';
 window.addEventListener("load", function () {
     document.querySelector('#btnRefresh').addEventListener('click', function () {
-        var eltSelTypeChart = document.querySelector('#selTypeChart');
-        var strTypeChart = eltSelTypeChart.value;
+        let eltSelTypeChart = document.querySelector('#selTypeChart');
+        let strTypeChart = eltSelTypeChart.value;
         console.log("strTypeChart:" + strTypeChart);
-        var eltListeValeurs = document.querySelector('#txtListeValeurs');
-        var tabVal = eltListeValeurs.value.split(',');
-        for (var i in tabVal)
+        let eltListeValeurs = document.querySelector('#txtListeValeurs');
+        let tabVal = eltListeValeurs.value.split(',');
+        for (let i in tabVal)
             tabVal[i] = Number(tabVal[i]);
         console.log("tabVal:" + JSON.stringify(tabVal)); //[23,16,18,8,5]
-        var sVal = new Serie("s1", tabVal);
-        var eltListePays = document.querySelector('#txtListePays');
-        var tabPays = eltListePays.value.split(',');
+        let sVal = new Serie("s1", tabVal);
+        let eltListePays = document.querySelector('#txtListePays');
+        let tabPays = eltListePays.value.split(',');
         console.log("tabPays:" + JSON.stringify(tabPays)); //["France","Allemagne","Italie","Espagne","Belgique"]
-        var sLabel = new Serie("pays", tabPays);
-        var myGraph = new MySimpleGraph("myCanvas", sVal, sLabel);
+        let sLabel = new Serie("pays", tabPays);
+        let myGraph = new MySimpleGraph("myCanvas", sVal, sLabel);
         myGraph.setTypeChartAsString(strTypeChart);
         myGraph.render();
     });

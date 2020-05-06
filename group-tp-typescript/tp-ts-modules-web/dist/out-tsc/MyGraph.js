@@ -1,5 +1,4 @@
-"use strict";
-var NB_DEFAULT_COLORS = 6;
+const NB_DEFAULT_COLORS = 6;
 var MyGraphType;
 (function (MyGraphType) {
     MyGraphType[MyGraphType["bar"] = 0] = "bar";
@@ -27,30 +26,30 @@ var myGraphDefaultBorderColors = [
     'rgba(153, 102, 255, 1)',
     'rgba(255, 159, 64, 1)'
 ];
-var MySimpleGraph = /** @class */ (function () {
-    function MySimpleGraph(idCanvasElement, dataSerie, labelSerie) {
+export class MySimpleGraph {
+    constructor(idCanvasElement, dataSerie, labelSerie) {
         this.idCanvasElement = idCanvasElement;
         this.dataSerie = dataSerie;
         this.labelSerie = labelSerie;
         this.chartType = MyGraphType.pie;
     }
-    MySimpleGraph.prototype.setTypeChartAsString = function (strTypeChart) {
+    setTypeChartAsString(strTypeChart) {
         this.chartType = MyGraphType[strTypeChart];
-    };
-    MySimpleGraph.prototype.render = function () {
+    }
+    render() {
         //agrandir si besoin la taille des tableaux des couleurs
         if (this.labelSerie) {
-            var n = this.labelSerie.values.length;
+            let n = this.labelSerie.values.length;
             if (n > NB_DEFAULT_COLORS) {
-                for (var i = NB_DEFAULT_COLORS; i < n; i++) {
+                for (let i = NB_DEFAULT_COLORS; i < n; i++) {
                     //a peaufiner via petite alteration sur couleurs recopiees
                     myGraphDefaultBackgroundColors[i] = myGraphDefaultBackgroundColors[i % NB_DEFAULT_COLORS];
                     myGraphDefaultBorderColors[i] = myGraphDefaultBorderColors[i % NB_DEFAULT_COLORS];
                 }
             }
         }
-        var canvasElement = document.getElementById(this.idCanvasElement);
-        var ctx = /*CanvasRenderingContext2D*/ canvasElement.getContext('2d');
+        let canvasElement = document.getElementById(this.idCanvasElement);
+        let ctx = /*CanvasRenderingContext2D*/ canvasElement.getContext('2d');
         if (MySimpleGraph.chartsMap.has(this.idCanvasElement))
             MySimpleGraph.chartsMap.get(this.idCanvasElement).destroy();
         this.chart = new Chart(ctx, {
@@ -83,12 +82,11 @@ var MySimpleGraph = /** @class */ (function () {
             }
         });
         MySimpleGraph.chartsMap.set(this.idCanvasElement, this.chart);
-    }; //end of render()
-    //chartsMap = Map beetwen idCanvas and chart
-    //to destroy old chart before create new one:
-    MySimpleGraph.chartsMap = new Map();
-    return MySimpleGraph;
-}());
+    } //end of render()
+}
+//chartsMap = Map beetwen idCanvas and chart
+//to destroy old chart before create new one:
+MySimpleGraph.chartsMap = new Map();
 //if responsive:false --> keep original size of canvas in html
 //if responsive:true (default value) --> automatic resize of canvas/chart to width of page (or container ?).
 //# sourceMappingURL=MyGraph.js.map

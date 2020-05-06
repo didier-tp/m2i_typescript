@@ -1,12 +1,8 @@
-"use strict";
-var Serie = /** @class */ (function () {
-    function Serie(label, values) {
-        if (label === void 0) { label = "?"; }
-        if (values === void 0) { values = []; }
+export class Serie {
+    constructor(label = "?", values = []) {
         this.label = label;
         this.values = values;
     }
-    Serie.prototype.push = function (val) { this.values.push(val); };
-    return Serie;
-}());
+    push(val) { this.values.push(val); }
+}
 //# sourceMappingURL=Serie.js.map

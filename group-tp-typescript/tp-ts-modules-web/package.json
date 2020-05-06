@@ -1,0 +1,12 @@
+{
+  "name": "tp-ts-modules-web",
+  "version": "1.0.0",
+  "description": "blabla",
+  "main": "index.js",
+  "scripts": {
+   "build" : "tsc && rollup -c rollup.config.js && tsc --out ./dist/build-es5/app-bundle.js --target es5 --allowJs dist/build-es2015/app-bundle.js" ,
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "didier",
+  "license": "ISC"
+}
