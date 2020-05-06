@@ -1,5 +1,6 @@
 import { Serie } from './Serie';
 import { MySimpleGraph } from './MyGraph';
+
  
  
  window.addEventListener("load", function(){
